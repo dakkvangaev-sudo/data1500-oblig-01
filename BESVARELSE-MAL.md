@@ -1,8 +1,8 @@
 # Besvarelse - Refleksjon og Analyse
 
-**Student:** [Ditt navn]
+**Student:** [Dåkk Ruslanovitsj Vangaev]
 
-**Studentnummer:** [Ditt studentnummer]
+**Studentnummer:** [Davan1754]
 
 **Dato:** [Innleveringsdato]
 
@@ -14,11 +14,22 @@
 
 **Identifiserte entiteter:**
 
-[Skriv ditt svar her - list opp alle entitetene du har identifisert]
+[Kunde{} sykkel{}, stasjon{}, utleie{}
+
+kunde: for kontaktinformasjon og annen informasjon om kunden.
+Sykkel: for status av sykkel. Hvor den er og om den er tilgjengelig eller ikke.
+stasjon: for kapasitet.
+utleie: for informasjon om utleie. tidspunkt, pris og hvem
+]
 
 **Attributter for hver entitet:**
 
-[Skriv ditt svar her - list opp attributtene for hver entitet]
+[
+kunde: fornavn, etternavn, mobilnummer, epost og kunde id.
+sykkel: sykkel id, innkjøpsdato, tilstand, status
+stasjon: adresse, kapasitet
+utleie: utleie tidspunkt, innlevering tidspunkt, pris, kunde id
+]
 
 ---
 
@@ -26,15 +37,61 @@
 
 **Valgte datatyper og begrunnelser:**
 
-[Skriv ditt svar her - forklar hvilke datatyper du har valgt for hver attributt og hvorfor]
+[
+(VARCHAR) for text,tall og tegn. 
+brukes på: fornavn, etternavn,mobilnummer,epost,tilstand,status og adresse
+(Date) for kun dato. brukes på: innkjøpsdato.
+(Date time) for dato og tid. brukes på utleie tidspunkt og innlevering tidspunkt.
+(Int) for kun heltall. brukes på kapasitet.
+(numeric(10,2)) for tall med desimaltall.Brukes på: pris
+]
 
 **`CHECK`-constraints:**
 
-[Skriv ditt svar her - list opp alle CHECK-constraints du har lagt til og forklar hvorfor de er nødvendige]
+[
+check(length(fornavn) > 0) for å sjekke om verdien til fornavn er mer enn 0
+
+check(length(etternavn) > 0) for å sjekke om verdien til etternavn er mer enn 0
+
+check (mobilnummer ~ "^[0-9]{10}$") for å sjekke om det er skrevet inn tall mellom 0 og 9 og for å sjekke om det er 10 antall tall.
+
+CHECK (sykkel_status IN ('ledig', 'utleid', 'reperasjon')) for å sjekke om sykkel er ledig, utleid eller i reperasjon
+
+CHECK (length(adresse) > 0) for å sjekke om verdien til adresse er mer enn 0
+
+CHECK (kapasitet > 0) for å sjekke om verdien til kapasitet er mer enn 0
+
+CHECK (innlevering_tidspunkt > utleie_tidspunkt) for å sjekke om innlevering tidspunkt er etter utleie tidspunkt
+
+CHECK (pris >= 0) for å sjekke om verdien til pris er mer eller lik 0
+]
 
 **ER-diagram:**
 
-[Legg inn mermaid-kode eller eventuelt en bildefil fra `mermaid.live` her]
+[erDiagram
+
+KUNDE{
+    varchar fornavn
+    varchar etternavn
+    varchar mobilnummer
+    varchar epost
+}
+
+SYKKEL {
+    DATE innkjopsdato
+    VARCHAR tilstand
+    VARCHAR sykkel_status
+}
+
+STASJON{
+    varcahr adresse
+    int kapasitet
+}
+
+UTLEIE{
+    date utleie
+    date innlevering
+}]
 
 ---
 
