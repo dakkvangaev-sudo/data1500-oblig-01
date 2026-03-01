@@ -1,10 +1,10 @@
 # Besvarelse - Refleksjon og Analyse
 
-**Student:** [Ditt navn]
+**Student:** [Dåkk Ruslanovitsj Vangaev]
 
-**Studentnummer:** [Ditt studentnummer]
+**Studentnummer:** [Davan1754]
 
-**Dato:** [Innleveringsdato]
+**Dato:** [01.03.2025]
 
 ---
 
